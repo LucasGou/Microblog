@@ -26,11 +26,14 @@ include('includes/connexion.inc.php');
                         <div class="form-group">
     
                             <?php
-                                echo "<input type='email' id='email' placeholder='email' class='form-control' name='email'></input>";
+                                echo "<input type='email' id='email' placeholder='votre e-mail' class='form-control' name='email'></input>";
                                 echo "</br>";
-                                echo "<input type='password' id='mdp' placeholder='mdp' class='form-control' name='mdp'></input>";
-                                echo"</br>";
-                                echo "<input type='submit' class='btn btn-success'></input>";
+                                echo "<input type='password' id='mdp' placeholder='votre mot de passe' class='form-control' name='mdp'></input>";
+                                echo "</br>";
+                                echo "<input type='checkbox'></input>  Se rappeler de moi";
+                                echo "</br>";
+                                echo "</br>";
+                                echo "<input type='submit' value='Se connecter' class='btn btn-success'></input>";
                             ?>
                         </div>
                     </form>

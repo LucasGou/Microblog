@@ -27,11 +27,11 @@ include('includes/connexion.inc.php');
                         <div class="form-group">
                             
                             <?php
-                                $sql="SELECT * FROM messages WHERE id=:id";
+                                /*$sql="SELECT * FROM messages WHERE id=:id";
                                 $content=$data['id'];
                             
                                 echo "<textarea id='message' name='message' class='form-control' placeholder='Message'>$content</textarea>";
-                                echo "<input type='hidden' name='id' value=' .. '>";
+                                echo "<input type='hidden' name='id' value=' .. '>";*/
                             ?>
                             
                             <textarea id="message" name="message" class="form-control" placeholder="Message"></textarea>
