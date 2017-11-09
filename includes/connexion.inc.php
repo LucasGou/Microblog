@@ -1,3 +1,8 @@
 <?php
-$pdo=new PDO('mysql:host=localhost;dbname=micro_blog','root','root');
+/*Cookie ?
+sid valide?*/
+$connect_util = true
+$envoi_util= ...
+    else
+        $connect_util false
 ?>
