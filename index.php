@@ -26,14 +26,6 @@ include('includes/connexion.inc.php');
                     <div class="col-sm-10">  
                         <div class="form-group">
                             
-                            <?php
-                                /*$sql="SELECT * FROM messages WHERE id=:id";
-                                $content=$data['id'];
-                            
-                                echo "<textarea id='message' name='message' class='form-control' placeholder='Message'>$content</textarea>";
-                                echo "<input type='hidden' name='id' value=' .. '>";*/
-                            ?>
-                            
                             <textarea id="message" name="message" class="form-control" placeholder="Message"></textarea>
                         </div>
                     </div>
@@ -55,24 +47,20 @@ $stmt=$pdo->query($sql);
 while($data=$stmt->fetch()){
     
     $suppr=$data['id'];
+    $mod=$data['id'];
     echo "<blockquote>";
     echo $data['contenu'];
     echo "</br></br>";
     echo "<footer> Publié le ";
     echo date("d-m-y à H:m",$data['date']);
     echo "</footer>";
-    echo "<a href='article.php?a=sup&id=$suppr' class='btn btn-danger'>Supprimer</a>";
-    echo " <a href='index.php?id=$suppr' class='btn btn-primary'>Modifier</a>";
+    echo "<a href='supp.php?a=sup&id=$suppr' class='btn btn-danger'>Supprimer</a>";
+    echo " <a href='mod.php?id=$mod' class='btn btn-primary'>Modifier</a>";
     echo "</blockquote>";
 
 }
 ?>
-            
-            
-            
-            
-            
-            
+                
 
             <div class="row">
                 <div class="col-md-12">
