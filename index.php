@@ -34,52 +34,66 @@ include('includes/connexion.inc.php');
                     </div>                        
                 </form>
             </div>
-            
-            
-            
-            
-            
+                        
             
 <?php
-$sql="SELECT * FROM messages ORDER BY date desc";
-$stmt=$pdo->query($sql);
-            
-while($data=$stmt->fetch()){
-    
-    $suppr=$data['id'];
-    $mod=$data['id'];
-    echo "<blockquote>";
-    echo $data['contenu'];
-    echo "</br></br>";
-    echo "<footer> Publié le ";
-    echo date("d-m-y à H:m",$data['date']);
-    echo "</footer>";
-    echo "<a href='supp.php?a=sup&id=$suppr' class='btn btn-danger'>Supprimer</a>";
-    echo " <a href='mod.php?id=$mod' class='btn btn-primary'>Modifier</a>";
-    echo "</blockquote>";
+             $messageparpage = 5 ;
+
+      $sql="SELECT * FROM messages ORDER BY date desc";
+
+  $req = $pdo->prepare($sql);
+  $req->execute();
+  $array = $req->fetchALL();
+  $nb_lignes = count($array);
+  $nb_pages=ceil($nb_lignes/$messageparpage);
+
+  if(isset($_GET['page']))
+  {
+       $pageActuelle=intval($_GET['page']);
+
+       if($pageActuelle>$nb_pages)
+       {
+            $pageActuelle=$nb_pages;
+       }
+  }
+  else
+  {
+       $pageActuelle=1;
+  }
+
+  $premiereEntree=($pageActuelle-1)*$messageparpage;
+
+  $retour_messages=" SELECT * FROM messages ORDER BY date desc LIMIT $premiereEntree, $messageparpage";
+
+      $stmt=$pdo->query($retour_messages);
+      while($data=$stmt->fetch()){
+        $suppr=$data['id'];
+        $mod=$data['id'];
+        echo "<blockquote>";
+        echo $data['contenu'];
+        echo "</br></br>";
+        echo "<footer> Publié le ";
+        echo date("d-m-y à H:m",$data['date']);
+        echo "</footer>";
+        echo "<a href='supp.php?a=sup&id=$suppr' class='btn btn-danger'>Supprimer</a>";
+        echo " <a href='mod.php?id=$mod' class='btn btn-primary'>Modifier</a>";
+        echo "</blockquote>";
 
 }
+      echo 'Page : ';
+  for($i=1; $i<=$nb_pages; $i++)
+  {
+       if($i==$pageActuelle)
+       {
+           echo $i;
+       }
+       else 
+       {
+            echo ' <a href="index.php?page='.$i.'">'.$i.'</a> ';
+       }
+  }
 ?>
-                
-
-            <div class="row">
-                <div class="col-md-12">
-                    <blockquote>
-                      <p>Lorem ipsum dolor sit amet, consectetur <a href="#">#adipiscing</a> elit. Integer posuere erat a ante.</p>
-                      <footer>Foo</footer>
-                    </blockquote>
-
-                    <blockquote>
-                      <p>Sed eu tellus vel lectus <a href="#">@rhoncus</a> maximus. Nam eu turpis ac eros pellentesque tincidunt. Maecenas pellentesque consequat libero</p>
-                      <footer>Mauris arcu</footer>
-                    </blockquote>
-
-                    <blockquote>
-                      <p>Nunc volutpat vel nibh vitae blandit</p>
-                      <footer>blandit</footer>
-                    </blockquote>
-                </div>
-            </div>
+            
         </div>
     </section>
 
