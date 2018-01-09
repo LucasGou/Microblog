@@ -49,6 +49,10 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
+                    <li><form method="POST" action="./recherche.php">
+                <input type=text name="requete" size-"10">
+                <input type=submit value="valider">
+                </form></li>
                     <li class="page-scroll">
                         <a href="connexion.php">Connexion</a>
                 </ul>
