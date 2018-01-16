@@ -41,7 +41,6 @@ $modifier=$_GET['id'];
                     <div class="col-sm-2">
                         <button type="submit" class="btn btn-success btn-lg" name="submit">Envoyer</button>
                     </div>                        
-                </form>
             </div>
         </div>
     </section>
