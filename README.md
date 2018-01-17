@@ -12,4 +12,4 @@ Ce qui ne fonctionne pas:
 - Connexion / inscription
 
 
-Logs: root / root
+Logs: root
